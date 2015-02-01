@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        /*http://benalman.com/news/2012/09/partial-application-in-javascript/
+        Partial application can be described as taking a function that accepts some number of arguments,
+        binding values to one or more of those arguments, and returning a new function that
+        only accepts the remaining, un-bound arguments.*/
+        function array(a, n) { return Array.prototype.slice.call(a, n || 0); }
+        function partial(f /*, ... */) {
+            var args = arguments; // Save the outer arguments array
+            return function() {
+                var a = array(args, 1); // Start with an array of outer args
+                var i=0, j=0;
+                // Loop through those args, filling in undefined values from inner
+                for(; i < a.length; i++)
+                    if (a[i] === undefined) a[i] = arguments[j++];
+                // Now append any remaining inner arguments
+                a = a.concat(array(arguments, j))
+                return f.apply(this, a);
+            };
+        }
+        var f = function(x,y,z) { return x * (y - z); };
+        partial(f,undefined,2)(3,4);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

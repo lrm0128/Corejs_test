@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        document.addEventListener('DOMContentLoaded',function(){
+            var ul = document.getElementById('ul');
+            console.log(ul.children.length);//10
+            for( var i = ul.children.length; i > 0 ; i--){
+                console.log('index'+i);//10
+                console.log('length:'+ul.children.length);
+                if( i%2 == 0){
+                    ul.removeChild(ul.children[i-1]);
+                    console.log(true);
+                }
+
+            }
+        });
+        //chap15.6.3:
+        /*The removeChild() method removes a node from the document tree. Be careful, however:
+        this method isn’t invoked on the node to be removed but (as the “child” part of
+        its name implies) on the parent of that node. Invoke the method on the parent node
+        and pass the child node that is to be removed as the method argument. To remove the
+        node n from the document, you’d write:
+                n.parentNode.removeChild(n);*/
+    </script>
+</head>
+<body>
+<ul id="ul">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+    <li>7</li>
+    <li>8</li>
+    <li>9</li>
+    <li>10</li>
+</ul>
+</body>
+</html>

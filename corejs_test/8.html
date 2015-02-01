@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        function Person(){
+            this.hello = 'hello';
+
+        }
+
+        function Employee(){}
+        function FloorManager(){}
+
+        Employee.prototype = new Person();
+        FloorManager.prototype = new Employee();
+
+        var emp = new Employee();
+        var flo = new FloorManager();
+        console.log(emp.hello);//hello
+        console.log(flo.hello);//hello
+        //chap6.1(page119):Every JavaScript object has a second JavaScript object (or null,
+        //but this is rare) associated with it. This second object is known as a prototype, and the
+        //first object inherits properties from the prototype.
+    </script>
+</head>
+<body>
+
+</body>
+</html>

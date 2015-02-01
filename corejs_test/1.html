@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        //solution1:without this keyword in function expression
+        function Person(name){
+            this.name = name;
+            var self = this;
+            setTimeout(function(){
+                console.log('hello from'+self.name);
+            },2000);
+            console.log(this);
+        };
+
+        var person = new Person('Rice Li');
+        console.log(person.name);
+        person;
+
+
+        //solution2: use this keyword in function expression and define
+        /*from chap9.2 and chap8.2.3 constructor invocations is that the
+        prototype property of the constructor is used as the prototype of the new object. This
+        means that all objects created with the same constructor inherit from the same object
+        and are therefore members of the same class.*/
+        function Person1(name){
+            this.name = name;
+            console.log(this)
+        }
+        Person1.prototype = {
+            sayhello:function(){
+                var self = this;
+                setTimeout(function(){
+                    console.log('hello from '+self.name);
+                },2000);
+            }
+        }
+        var person1 = new Person1('rice');
+        person1.sayhello();
+    </script>
+</head>
+<body>
+
+</body>
+</html>

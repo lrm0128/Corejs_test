@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        'use strict';
+        function test(){
+            console.log(arguments.caller);
+        }
+        test.call(window);
+        /*chap8.3.2.1: In addition to its array elements, the Arguments object defines callee and caller properties.
+        In ECMAScript 5 strict mode, these properties are guaranteed to raise a TypeError if you try to read or write them.*/
+    </script>
+</head>
+<body>
+
+</body>
+</html>

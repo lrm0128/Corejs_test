@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        document.addEventListener('DOMContentLoaded',function(){
+            var ul = document.getElementsByTagName('ul')[0];
+            var lis = ul.children;
+            for( var i = 0,len = lis.length;i < len; i++){
+                (function(){
+                    lis[i].addEventListener('click',function(){
+                        console.log('This is child number '+i);
+                    },true);
+                }())
+
+            }
+            console.log(i);
+        });
+
+
+    </script>
+</head>
+<body>
+<ul>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+
+</body>
+</html>

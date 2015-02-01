@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        var counter = 0;
+        var stop = 10;
+        function print(){
+            setTimeout(function(){
+                if(counter < stop){
+                    counter++;
+                    console.log(counter);
+                    print();
+                }
+            },1000)
+        }
+        print();
+        //chap14.1:timers
+        //http://www.w3schools.com/jsref/met_win_settimeout.asp
+    </script>
+</head>
+<body>
+
+</body>
+</html>

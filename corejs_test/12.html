@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        var grandparent = { lastname: 'Li' };
+
+        var parent = Object.create(grandparent);
+        parent.firstname = 'Rice';
+
+        var child = Object.create(parent);
+
+        function deleteProperty_Raw(obj, propertyname) {
+            // check if the property is available in the object (own or inherited)
+            if (propertyname in obj) {
+                // check if property is own property
+                if (obj.hasOwnProperty(propertyname)) {
+                    console.log('deleting ' + propertyname + ' on ' + JSON.stringify(obj));
+                    delete obj[propertyname];
+                } else {
+                    // the property is defined on an ancestor
+                    var parent = Object.getPrototypeOf(obj);
+                    // repeat process
+                    deleteProperty_Raw(parent, propertyname);
+                }
+            }
+        }
+
+        deleteProperty_Raw(child, 'firstname');
+
+        console.log(parent.firstname);
+        console.log(grandparent.lastname);
+
+        deleteProperty_Raw(child, 'lastname');
+
+        console.log(grandparent.lastname);
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

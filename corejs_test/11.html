@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>JS Bin</title>
+    <script>
+        factorial.cache = {
+            0: 1,
+            1: 1
+        };
+        function factorial(num) {
+            if (num < 1) throw new Error('Factorials for non-negative integers do not exist!');
+            if (num in factorial.cache) {
+                return factorial.cache[num];
+            } else {
+                factorial.cache[num] = num * factorial(num - 1);
+                return factorial.cache[num];
+            }
+        }
+        console.log(factorial(6));
+    </script>
+</head>
+<body>
+
+</body>
+</html>
